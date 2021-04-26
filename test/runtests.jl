@@ -86,7 +86,7 @@ Test.@testset "package tests" begin
             fp = "out/fefe14d6a63b4dc1666f93e7d95367977969bdf7"
             dp = DataRegistryUtils.read_data_product_from_file(fp, use_axis_arrays=true, verbose=false)
             component = dp["/test_result/date-cumulative"]
-            Test.@test true
+            Test.@test !isnothing(component)
         end
 
         ### Example: custom SQL query

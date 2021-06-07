@@ -16,6 +16,7 @@ struct DataRegistryHandle
 end
 
 ## replacement for fetch_data_per_yaml
+# - NB. add offline_mode option?
 """
     initialise(config_file)
 
@@ -47,13 +48,41 @@ end
 
 ## add alias?
 """
-   read_array(handle, data_product; component, version)
+   fdp_read_estimate(handle, data_product; component, version)
+
+Read TOML-based data product.
+- note that it must already have been downloaded from the remote data store using ``fdp pull``.
+- the latest version of the data is read unless otherwise specified.
+"""
+function fdp_read_estimate(handle::DataRegistryHandle, data_product::String; component=nothing, version=nothing)
+   ## 1. API call to LDR
+   ## 2. read estimate from TOML file and return
+   # FILL IN
+end
+
+## add alias?
+"""
+   fdp_read_array(handle, data_product; component, version)
 
 Read [array] data product.
 - note that it must already have been downloaded from the remote data store using ``fdp pull``.
 - the latest version of the data is read unless otherwise specified.
 """
-function read_array(handle::DataRegistryHandle, data_product::String; component=nothing, version=nothing)
+function fdp_read_array(handle::DataRegistryHandle, data_product::String; component=nothing, version=nothing)
+   ## 1. API call to LDR
+   ## 2. read array from file -> process
+   # FILL IN
+end
+
+## add alias?
+"""
+   fdp_read_table(handle, data_product; component, version)
+
+Read [table] data product.
+- note that it must already have been downloaded from the remote data store using ``fdp pull``.
+- the latest version of the data is read unless otherwise specified.
+"""
+function fdp_read_table(handle::DataRegistryHandle, data_product::String; component=nothing, version=nothing)
    ## 1. API call to LDR
    ## 2. read array from file -> process
    # FILL IN
@@ -65,7 +94,7 @@ end
 
 For writing external objects.
 
-Use link_read() and link_write() to read and write objects, rather than the standard API read_xxx() and write_xxx() calls.
+Use link_read() and link_write() to read and write external objects, rather than the standard API read_xxx() and write_xxx() calls.
 """
 function link_write(handle::DataRegistryHandle, alias::String)
    ## 1. API call to LDR (register)

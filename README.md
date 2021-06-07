@@ -23,3 +23,5 @@ pkg> add https://github.com/ScottishCovidResponse/DataRegistryUtils.jl
 See the [package documentation][docs] for instructions and examples.
 
 [docs]: https://scottishcovidresponse.github.io/DataRegistryUtils.jl/stable/
+
+[dp_docs]: https://scottishcovidresponse.github.io/docs/data_pipeline/interface/

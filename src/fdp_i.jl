@@ -5,6 +5,7 @@
 # fdp pull config.yaml
 # fdp run config.yaml
 # fdp push config.yaml
+## NB. 'fdp' -> FAIR
 
 ## produced by initialise
 # - add LDR property?
@@ -15,12 +16,14 @@ struct DataRegistryHandle
    ss_obj_id      # submission script file id
 end
 
+## 0. FDP RUN gets called by user using CI tool
+
 ## replacement for fetch_data_per_yaml
 # - NB. add offline_mode option?
 """
     initialise(config_file, submission_script)
 
-Read working config.yaml file. Returns a `DataRegistryHandle` containing:
+Read [working] config.yaml file. Returns a `DataRegistryHandle` containing:
 - the working config.yaml file contents
 - the object id for this file
 - the object id for the submission script file

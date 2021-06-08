@@ -80,6 +80,7 @@ end
 #     return TOML.parsefile(filepath)
 # end
 
+## NB. NEED TO REWORK THIS TO ACCOUNT
 """
     read_data_product_from_file(filepath; use_axis_arrays = false, verbose = false)
 

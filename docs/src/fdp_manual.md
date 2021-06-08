@@ -1,4 +1,6 @@
 # FDP interface manual
+This is the updated manual for the upcoming `fdp` interfaced version of the package.
+
 ```@contents
 Pages = ["fdp_manual.md"]
 Depth = 3
@@ -63,6 +65,7 @@ registry_audit
 
 ## Index
 ```@index
+Pages = ["fdp_manual.md"]
 ```
 
 [dp_docs]: https://scottishcovidresponse.github.io/docs/data_pipeline/interface/

@@ -48,7 +48,7 @@ end
 
 ## add alias?
 """
-   `fdp_read_estimate(handle, data_product; component, version)`
+    fdp_read_estimate(handle, data_product; component, version)
 
 Read TOML-based data product.
 - note that it must already have been downloaded from the remote data store using `fdp pull`.
@@ -62,7 +62,7 @@ end
 
 ## add alias?
 """
-   `fdp_read_array(handle, data_product; component, version)`
+    fdp_read_array(handle, data_product; component, version)
 
 Read [array] data product.
 - note that it must already have been downloaded from the remote data store using `fdp pull`.
@@ -76,7 +76,7 @@ end
 
 ## add alias?
 """
-   `fdp_read_table(handle, data_product; component, version)`
+    fdp_read_table(handle, data_product; component, version)
 
 Read [table] data product.
 - note that it must already have been downloaded from the remote data store using `fdp pull`.
@@ -90,7 +90,7 @@ end
 
 ##
 """
-   link_write(handle, alias)
+    link_write(handle, alias)
 
 For writing external objects.
 
@@ -102,7 +102,7 @@ end
 
 ## write_array
 """
-   write_array()
+    write_array()
 
 Write an array as a component to an hdf5 file.
 
@@ -116,7 +116,7 @@ end
 
 ## register issue with data product; component; externalobject; or script
 """
-   raise_issue(handle; ... )
+    raise_issue(handle; ... )
 
 Register issue with data product; component; external object; or script.
 

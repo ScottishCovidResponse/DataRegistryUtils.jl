@@ -37,9 +37,9 @@ end
    link_read(handle, alias)
 
 This function returns the path of an external object in the local data store:
-- if the alias is already recorded in the handle, returns the path. If not, find the location of the file referenced by its alias.
-- note that the alias is not recorded in the data registry, rather, it’s a means to reference external objects in the config.yaml
-- store metadata associated with the external object.
+- If the alias is already recorded in the handle, returns the path. If not, find the location of the file referenced by its alias.
+- Note that the alias is not recorded in the data registry, rather, it’s a means to reference external objects in the config.yaml
+- Also stores metadata associated with the external object.
 """
 function link_read(handle::DataRegistryHandle, alias::String)
    ## 1. API call to LDR
@@ -48,10 +48,10 @@ end
 
 ## add alias?
 """
-   fdp_read_estimate(handle, data_product; component, version)
+   `fdp_read_estimate(handle, data_product; component, version)`
 
 Read TOML-based data product.
-- note that it must already have been downloaded from the remote data store using ``fdp pull``.
+- note that it must already have been downloaded from the remote data store using `fdp pull`.
 - the latest version of the data is read unless otherwise specified.
 """
 function fdp_read_estimate(handle::DataRegistryHandle, data_product::String; component=nothing, version=nothing)
@@ -65,7 +65,7 @@ end
    fdp_read_array(handle, data_product; component, version)
 
 Read [array] data product.
-- note that it must already have been downloaded from the remote data store using ``fdp pull``.
+- note that it must already have been downloaded from the remote data store using `fdp pull`.
 - the latest version of the data is read unless otherwise specified.
 """
 function fdp_read_array(handle::DataRegistryHandle, data_product::String; component=nothing, version=nothing)
@@ -79,7 +79,7 @@ end
    fdp_read_table(handle, data_product; component, version)
 
 Read [table] data product.
-- note that it must already have been downloaded from the remote data store using ``fdp pull``.
+- note that it must already have been downloaded from the remote data store using `fdp pull`.
 - the latest version of the data is read unless otherwise specified.
 """
 function fdp_read_table(handle::DataRegistryHandle, data_product::String; component=nothing, version=nothing)

@@ -18,7 +18,7 @@ initialise
 
 ### Reading data
 
-Note that the ``fdp_`` prefix is temporary.
+Note that the `fdp_` prefix is temporary to avoid inline docs clashes with the existing functionality.
 
 ```@docs
 fdp_read_estimate
@@ -28,7 +28,7 @@ fdp_read_table
 
 ### Extenal objects
 
-NB. per the [Data pipeline docs][dp_docs], use link_read() and link_write() to read and write external objects (rather than the standard API ``read_xxx`` and ``write_xxx`` functions.)
+NB. per the [Data pipeline docs](https://scottishcovidresponse.github.io/docs/data_pipeline/interface/), use link_read() and link_write() to read and write external objects (rather than the standard API `read_xxx` and `write_xxx` functions.)
 
 ```@docs
 link_read
@@ -67,5 +67,3 @@ registry_audit
 ```@index
 Pages = ["fdp_manual.md"]
 ```
-
-[dp_docs]: https://scottishcovidresponse.github.io/docs/data_pipeline/interface/

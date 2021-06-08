@@ -34,12 +34,12 @@ end
 
 ## nb. what does 'alias recorded in handle'? that it exists in the working config file? if not, how can it be
 """
-   link_read(handle, alias)
+    link_read(handle, alias)
 
 This function returns the path of an external object in the local data store:
 - If the alias is already recorded in the handle, returns the path. If not, find the location of the file referenced by its alias.
-- Note that the alias is not recorded in the data registry, rather, it’s a means to reference external objects in the config.yaml
-- Also stores metadata associated with the external object.
+- Also, stores metadata associated with the external object.
+- Note that the alias is not recorded in the data registry. Rather, it is a means to reference external objects in the `config.yaml` file.
 """
 function link_read(handle::DataRegistryHandle, alias::String)
    ## 1. API call to LDR
@@ -62,7 +62,7 @@ end
 
 ## add alias?
 """
-   fdp_read_array(handle, data_product; component, version)
+   `fdp_read_array(handle, data_product; component, version)`
 
 Read [array] data product.
 - note that it must already have been downloaded from the remote data store using `fdp pull`.
@@ -76,7 +76,7 @@ end
 
 ## add alias?
 """
-   fdp_read_table(handle, data_product; component, version)
+   `fdp_read_table(handle, data_product; component, version)`
 
 Read [table] data product.
 - note that it must already have been downloaded from the remote data store using `fdp pull`.

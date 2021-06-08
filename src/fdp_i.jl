@@ -1,7 +1,7 @@
 ### new interface for FDP ###
 # - implements: https://scottishcovidresponse.github.io/docs/data_pipeline/interface/
 
-
+## BASELINE FDP FUNCTIONALITY:
 # fdp pull config.yaml
 # fdp run config.yaml
 # fdp push config.yaml

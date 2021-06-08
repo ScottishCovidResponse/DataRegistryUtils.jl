@@ -46,7 +46,7 @@ write_array
 WIP. TBA:
 - estimate, table
 - model
-- model run
+- model run? or is this done only via scripts?
 
 ### Raising issues
 

@@ -361,6 +361,10 @@ end
 ## db staging
 include("db_staging.jl")
 
+## fdp interface
+include("fdp_i.jl")
+
+## public functions and types:
 export initialise_local_registry, read_data_product_from_file
 export fetch_data_per_yaml  # deprecated
 export read_estimate, read_table, read_array, load_array!
@@ -373,6 +377,10 @@ export commit_staged_data_product
 export commit_staged_model, commit_staged_run
 export registry_commit_status, commit_all
 export whats_my_file, registry_audit
-
+## fdp interface:
+export initialise
+export fdp_read_estimate, fdp_read_array, fdp_read_table
+export link_read, link_write, write_array
+export raise_issue
 
 end # module

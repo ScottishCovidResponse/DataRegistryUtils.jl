@@ -18,14 +18,14 @@ end
 ## replacement for fetch_data_per_yaml
 # - NB. add offline_mode option?
 """
-    initialise(config_file)
+    initialise(config_file, submission_script)
 
 Read working config.yaml file. Returns a `DataRegistryHandle` containing:
 - the working config.yaml file contents
 - the object id for this file
 - the object id for the submission script file
 """
-function initialise(config_file::String)
+function initialise(config_file::String, submission_script::String)
    ## 1. download data/metadata from RDR and register: sources
    # fdp pull config_file
    ## 2. read [user] config_file and generate working config .yaml

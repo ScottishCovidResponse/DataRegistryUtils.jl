@@ -22,10 +22,10 @@ function whats_my_example()
     ## run for this file only
     DataRegistryUtils.whats_my_file(some_filepath)
     # - same again but display remote file path (can be messy)
-    DataRegistryUtils.whats_my_file(some_filepath, show_path=true)
-    # - run for an entire directory
-    some_dir = "examples/simple/data/"
-    DataRegistryUtils.whats_my_file(some_dir)
+    # DataRegistryUtils.whats_my_file(some_filepath, show_path=true)
+    # # - run for an entire directory
+    # some_dir = "examples/simple/data/"
+    # DataRegistryUtils.whats_my_file(some_dir)
 end
 
 ## run examples:

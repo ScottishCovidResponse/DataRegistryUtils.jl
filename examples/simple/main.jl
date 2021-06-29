@@ -18,7 +18,7 @@
 #
 # Author:   Martin Burke (martin.burke@bioss.ac.uk)
 # Date:     24-Jan-2021
-# UPDATED:  7-Feb-2021
+# UPDATED:  23-Jun-2021
 #### #### #### #### ####
 
 
@@ -132,7 +132,6 @@ model_run_id = DataRegistryUtils.register_model_run(db, code_release_id,
 
 ### 7. commit staged objects to the Registry
 DataRegistryUtils.registry_commit_status(db)
-# code_release_url = DataRegistryUtils.commit_staged_model(db, code_release_id, scrc_access_tkn)
-# model_run_url = DataRegistryUtils.commit_staged_run(db, model_run_id, scrc_access_tkn)
-# DataRegistryUtils.registry_commit_status(db)
-# println("finished - model run registered as: ", model_run_url)
+model_run_url = DataRegistryUtils.commit_staged_run(db, model_run_id, scrc_access_tkn)
+DataRegistryUtils.registry_commit_status(db)
+println("finished - model run registered as: ", model_run_url)

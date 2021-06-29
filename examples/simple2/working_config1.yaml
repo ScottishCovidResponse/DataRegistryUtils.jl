@@ -1,0 +1,10 @@
+run_metadata:
+  description: An empty code run
+  local_data_registry_url: https://localhost:8000/api/
+  remote_data_registry_url: https://data.scrc.uk/api/
+  default_input_namespace: martinburke
+  default_output_namespace: martinburke
+  write_data_store: /media/martin/storage/projects/AtomProjects/DataRegistryUtils.jl/out/datastore/
+  local_repo: /media/martin/storage/projects/AtomProjects/DataRegistryUtils.jl/
+  script: |-
+    R -f simple_working_examples/empty_script.R /Users/SoniaM/datastore/coderun/20210511-231444/

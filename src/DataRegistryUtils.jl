@@ -8,7 +8,9 @@ import SHA
 import Dates
 # import PrettyTables
 
-const API_ROOT = "https://data.scrc.uk/api/"
+# const API_ROOT = "https://data.scrc.uk/api/"
+const API_ROOT = "http://127.0.0.1:8000/api/"
+
 const NS_ROOT = string(API_ROOT, "namespace/")
 const STR_ROOT = string(API_ROOT, "storage_root/")
 const SL_ROOT = string(API_ROOT, "storage_location/")
@@ -59,11 +61,11 @@ end
 ### upload to data registry
 function http_post_data(table::String, data, scrc_access_tkn::String)
     url = string(API_ROOT, table)
-    # println(" posting data to table := ", url, ": \n", data)
+    println(" POSTing data to := ", url, ": \n ", data)
     headers = Dict("Authorization"=>scrc_access_tkn, "Content-Type" => "application/json")
     r = HTTP.request("POST", url, headers=headers, body=JSON.json(data))
     resp = JSON.parse(String(r.body))
-    # println(" - response: \n ", resp)
+    println(" - response: \n ", resp)
     return resp
 end
 

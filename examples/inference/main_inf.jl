@@ -29,6 +29,8 @@
 # Author:   Martin Burke (martin.burke@bioss.ac.uk)
 # Date:     24-Jan-2021
 # UPDATED:  7-Feb-2021
+# NB. THIS CODE AND EXAMPLE IS NOW OBSOLETE DUE TO UNDERLYING PIPELINE CHANGES c. April 2021
+# PLEASE SEE: examples/simple/main.jl instead
 #### #### #### #### ####
 
 

@@ -1,5 +1,6 @@
-### new interface for FDP ###
+### new interface for FAIR data pipeline ###
 # - implements: https://scottishcovidresponse.github.io/docs/data_pipeline/interface/
+# - UPDATED 29/6: https://fairdatapipeline.github.io/docs/interface/example1/
 
 ## BASELINE FDP FUNCTIONALITY:
 # fdp pull config.yaml
@@ -7,16 +8,77 @@
 # fdp push config.yaml
 ## NB. 'fdp' -> FAIR
 
+## LOCAL DR INSTRUCTIONS:
+# - start using: ~/.fair/registry/scripts/start_fair_registry
+# - stop using: ~/.fair/registry/scripts/stop_fair_registry
+# - view tcp using: sudo netstat -ntap | grep LISTEN
+
 ## produced by initialise
 # - add LDR property?
 struct DataRegistryHandle
-   config_file
-   working_config
-   wc_obj_id      # config file id
-   ss_obj_id      # submission script file id
+   config_file    # working config file
+   wc_obj_uri     # config file id
+   ss_obj_uri     # submission script file id
+end
+# - NB. FAIR RUN [server] gets called by user using CI tool
+
+## registry token
+function get_access_token()
+   # fp = "~/.fair/registry/token" # NB. v THIS IS A HACK **
+   fp = "/home/martin/.fair/registry/token"
+   token = open(fp) do file
+      return read(file, String)
+   end
+   return string("token ", token)
 end
 
-## 0. FDP RUN gets called by user using CI tool
+## register code repo release (i.e. model code)
+# - PP per meeting 29/6
+# function register_code_repo(name::String, version::String, repo::String,
+#    hash::String, scrc_access_tkn::String, description::String,
+#    website::String, storage_root_url::String, storage_root_id::String)
+#
+#    ## UPDATED: check name/version
+#    crr_chk = search_code_repo_release(name, version)
+#    sl_path = replace(repo, storage_root_url => "")
+#    if crr_chk["count"] == 0
+#       obj_id = insert_storage_location(sl_path, hash, description, storage_root_id, scrc_access_tkn)
+#       ## register release
+#       body = (name=name, version=version, object=obj_id, website=website)
+#       resp = http_post_data("code_repo_release", body, scrc_access_tkn)
+#       println("NB. new code repo release registered. URI := ", resp["url"])
+#       return resp["url"]
+#    else
+#       ## check repo is the same
+#       # NB. check SR match?
+#       resp = http_get_json(crr_chk["results"][1]["object"])
+#       resp = http_get_json(resp["storage_location"])
+#       sl_path  == resp["path"] || println("WARNING: repo mismatch detected := ", sl_path, " != ", resp["path"])
+#       println("NB. code repo release := ", crr_chk["results"][1]["url"])
+#       return crr_chk["results"][1]["url"]
+#    end
+# end
+
+## register storage root
+function register_storage_root(path_root::String, is_local::Bool)
+   il = is_local ? "True" : "False"
+   body = Dict("root"=>path_root, "local"=>il)
+   resp = http_post_data("storage_root", body, get_access_token())
+   return resp["url"]
+end
+
+## return default SR URI
+function get_default_sroot() #, handle::DataRegistryHandle
+   url = string(API_ROOT, "storage_root/?updated_by=&last_updated=&root=&local=true")
+   resp = http_get_json(url)
+   if resp["count"]==0
+      ## add df
+      sr = register_storage_root("file:///", true)
+      return sr
+   else
+      return resp["results"][1]["url"]
+   end
+end
 
 ## replacement for fetch_data_per_yaml
 # - NB. add offline_mode option?
@@ -28,7 +90,15 @@ Read [working] config.yaml file. Returns a `DataRegistryHandle` containing:
 - the object id for this file
 - the object id for the submission script file
 """
-function initialise(config_file::String, submission_script::String)
+function initialise(config_file::String, submission_script::String; code_repo=nothing)
+   C_CF_DESC = "Working config file."
+   C_SS_DESC = "Submission script (Julia.)"
+   ##
+   storage_root_uri = get_default_sroot()
+   # cf_obj_uri = insert_storage_location(config_file, get_file_hash(config_file), C_CF_DESC, storage_root_id)#, scrc_access_tkn
+   # return DataRegistryHandle(config_file, cf_obj_uri, ss_obj_uri)
+   # ss_obj_uri =
+   # repo_obj_id
    ## 1. download data/metadata from RDR and register: sources
    # fdp pull config_file
    ## 2. read [user] config_file and generate working config .yaml

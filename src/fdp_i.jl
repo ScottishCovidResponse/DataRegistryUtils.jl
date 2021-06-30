@@ -61,8 +61,8 @@ end
 
 ## register storage root
 function register_storage_root(path_root::String, is_local::Bool)
-   il = is_local ? "True" : "False"
-   body = Dict("root"=>path_root, "local"=>il)
+   # il = is_local ? "True" : "False"
+   body = Dict("root"=>path_root, "local"=>is_local)
    resp = http_post_data("storage_root", body, get_access_token())
    return resp["url"]
 end

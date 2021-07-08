@@ -13,6 +13,7 @@ end
 function search_storage_location(path::String, hash::String, root_id::String)
     tf_sr_id = get_id_from_root(root_id, STR_ROOT)
     search_url = string(API_ROOT, "storage_location/?path=", HTTP.escapeuri(path), "&hash=", hash, "&storage_root=", tf_sr_id)
+    println("SEARCH: ", search_url)
     return http_get_json(search_url)
 end
 

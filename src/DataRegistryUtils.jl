@@ -8,11 +8,15 @@ import SHA
 import Dates
 # import PrettyTables
 
+const C_DEBUG_MODE = true
 # const API_ROOT = "https://data.scrc.uk/api/"
-const API_ROOT = "http://localhost:8000/api/"
+const LOCAL_DR_STEM = "http://localhost"
+const LOCAL_DR_PORTLESS = string(LOCAL_DR_STEM, "/api/")
+# const LOCAL_DR_PORT = 8000
+const API_ROOT = string(LOCAL_DR_STEM, ":8000", "/api/")
 
 const NS_ROOT = string(API_ROOT, "namespace/")
-const STR_ROOT = string(API_ROOT, "storage_root/")
+const STR_ROOT = string(LOCAL_DR_PORTLESS, "storage_root/")
 const SL_ROOT = string(API_ROOT, "storage_location/")
 const TF_ROOT = string(API_ROOT, "text_file/")
 # const OBJ_ROOT = string(API_ROOT, "object/")

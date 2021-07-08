@@ -21,14 +21,23 @@
 # - view tcp using: sudo netstat -ntap | grep LISTEN
 import DataRegistryUtils
 
+ss = "examples/simple2/main.jl"
 ## 1. Empty code run
-wc = "examples/simple2/working_config1.yaml"
-handle = DataRegistryUtils.initialise(wc, "ss")
+# wc = "examples/simple2/working_config1.yaml"
+# handle = DataRegistryUtils.initialise(wc, ss)
+# DataRegistryUtils.finalise(handle; comments="Empty code run example.")
 
 ## 2. Write data product (HDF5)
+# wc = "examples/simple2/working_config2.yaml"
+# handle = DataRegistryUtils.initialise(wc, ss)
 
 ## 3. Read data product (HDF5)
 
 ## 4. Write data product (csv)
+wc = "examples/simple2/working_config4.yaml"
+handle = DataRegistryUtils.initialise(wc, ss)
+# DataRegistryUtils.write_table(handle, tmp, "test/csv")
+DataRegistryUtils.register_data_product(handle, "examples/register/tbl.csv", "test/csv")
+DataRegistryUtils.finalise(handle; comments="Write CSV example.")
 
 ## 5. Write data product (point estimate)

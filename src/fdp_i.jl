@@ -48,9 +48,10 @@ function http_post_data(endpoint::String, data)
     body = JSON.json(data)
     C_DEBUG_MODE && println(" POSTing data to := ", url, ": \n ", body)
     r = HTTP.request("POST", url, headers=headers, body=body)
-    resp = JSON.parse(String(r.body))
-    # println(" - response: \n ", resp)
-    return resp
+    # resp = String(r.body)
+    resp = replace(String(r.body), "http://localhost/api/" => "http://localhost:8000/api/")
+    println(" - Response: \n ", resp)
+    return JSON.parse(resp)
 end
 
 ## register code repo release (i.e. model code)
